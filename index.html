@@ -4,17 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ELLIIA – Creative Systems</title>
-  <meta name="description" content="ELLIIA – Music Production, TouchDesigner Visuals, AI & Game Development. Инновационные решения для музыки, графики и технологий." />
-  <meta name="keywords" content="ELLIIA, music production, TouchDesigner, AI development, game development, interactive art" />
+  <meta name="description" content="ELLIIA – Music Production, TouchDesigner Visuals, AI & Game Development." />
+  <meta name="keywords" content="ELLIIA, music, visuals, AI, games" />
   <style>
     * {
-      margin: 0; padding: 0; box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
+
     html, body {
       height: 100%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #222;
-      line-height: 1.5;
+      color: #eee;
+      line-height: 1.4;
+      overflow-x: hidden;
+      background-color: transparent;
+      scroll-behavior: smooth;
     }
 
     #vanta-bg {
@@ -26,83 +32,93 @@
     }
 
     body {
-      background-color: transparent;
-      padding: 24px;
+      padding: 16px;
     }
 
     .container {
-      max-width: 800px;
+      max-width: 760px;
       margin: 0 auto;
     }
 
     .glass {
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 20px;
-      backdrop-filter: blur(16px) saturate(180%);
-      -webkit-backdrop-filter: blur(16px) saturate(180%);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-      background-clip: padding-box;
-      padding: 30px;
-      margin-bottom: 32px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 16px;
+      backdrop-filter: blur(14px) saturate(160%);
+      -webkit-backdrop-filter: blur(14px) saturate(160%);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      padding: 20px;
+      margin-bottom: 24px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .glass.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .glass:hover {
+      transform: scale(1.01);
     }
 
     .header h1 {
-      font-size: 2.2rem;
-      font-weight: 600;
-      letter-spacing: 2px;
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: 3px;
       color: #fff;
       text-align: center;
     }
 
     .header p {
-      font-size: 1rem;
-      color: #ddd;
+      font-size: 0.9rem;
+      color: #ccc;
       text-align: center;
-      margin-top: 10px;
+      margin-top: 6px;
     }
 
     .cards {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 20px;
     }
 
     .card-title {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       font-weight: 700;
       text-transform: uppercase;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       color: #fff;
     }
 
     .card-subtitle {
-      font-size: 1rem;
-      color: #ccc;
-      margin-bottom: 16px;
+      font-size: 0.85rem;
+      color: #bbb;
+      margin-bottom: 12px;
     }
 
     .card-price {
-      font-size: 1.2rem;
+      font-size: 0.95rem;
       font-weight: 700;
       background: rgba(255, 255, 255, 0.1);
-      padding: 8px 16px;
-      display: inline-block;
-      border-radius: 8px;
-      margin-bottom: 16px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin-bottom: 14px;
       color: #fff;
+      display: inline-block;
     }
 
     .card-features {
       list-style: none;
       padding-left: 0;
-      color: #eee;
     }
 
     .card-features li {
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       padding-left: 18px;
       position: relative;
+      font-size: 0.9rem;
     }
 
     .card-features li::before {
@@ -114,12 +130,12 @@
     }
 
     .philosophy {
-      font-size: 1rem;
-      color: #f0f0f0;
+      font-size: 0.9rem;
+      color: #eaeaea;
     }
 
     .philosophy strong {
-      color: #ffffff;
+      color: #fff;
     }
 
     .contact {
@@ -130,6 +146,7 @@
     .contact a {
       color: #9ad0ff;
       text-decoration: none;
+      font-size: 0.9rem;
     }
 
     .contact a:hover {
@@ -137,58 +154,63 @@
     }
 
     form {
-      margin-top: 16px;
+      margin-top: 12px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     input[type="email"] {
-      padding: 10px 14px;
+      padding: 8px 12px;
       border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      outline: none;
+      border-radius: 6px;
+      font-size: 0.95rem;
       width: 100%;
-      max-width: 300px;
+      max-width: 260px;
       background: rgba(255, 255, 255, 0.2);
       color: #fff;
       backdrop-filter: blur(6px);
+      transition: border 0.2s ease;
     }
 
     input::placeholder {
       color: #ccc;
     }
 
+    input:focus {
+      border: 1px solid #9ad0ff;
+      outline: none;
+    }
+
     button {
-      padding: 12px 24px;
+      padding: 10px 20px;
       border: none;
-      border-radius: 8px;
+      border-radius: 6px;
       background-color: #1a1a1a;
       color: white;
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 0.95rem;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
     button:hover {
       background-color: #222222;
+      transform: scale(1.05);
     }
 
     @media (max-width: 600px) {
-      body {
-        padding: 16px;
-      }
       .header h1 {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
       }
+
       .card-title {
-        font-size: 1.3rem;
-      }
-      .card-price {
         font-size: 1rem;
+      }
+
+      .card-price {
+        font-size: 0.85rem;
       }
     }
   </style>
@@ -218,7 +240,7 @@
       <article class="glass">
         <h2 class="card-title">TouchDesigner & Visuals</h2>
         <p class="card-subtitle">Immersive visuals and interactive patches</p>
-        <p class="card-price">$100 USD per minute of graphics</p>
+        <p class="card-price">from $150 USD</p>
         <ul class="card-features">
           <li>Custom video clip processing</li>
           <li>TouchDesigner patch development</li>
@@ -252,7 +274,7 @@
       <p><strong>Instagram:</strong> <a href="https://instagram.com/elliia.elliia.elliia" target="_blank">@elliia.elliia.elliia</a></p>
       <p><strong>Telegram / Email:</strong> available on request</p>
       <form action="mailto:ellijabooking@gmail.com" method="post" enctype="text/plain">
-        <input type="email" placeholder="your.email@example.com" required />
+        <input id="email-field" type="email" placeholder="your.email@example.com" required />
         <button type="submit">Send Inquiry</button>
       </form>
     </section>
@@ -275,7 +297,25 @@
       points: 10.0,
       maxDistance: 25.0,
       spacing: 18.0
-    })
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.glass').forEach(el => observer.observe(el));
+
+    // Scroll into view on input focus (mobile fix)
+    const emailField = document.getElementById("email-field");
+    emailField.addEventListener("focus", () => {
+      setTimeout(() => {
+        emailField.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 300);
+    });
   </script>
 </body>
 </html>
