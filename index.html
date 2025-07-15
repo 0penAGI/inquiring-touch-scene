@@ -17,7 +17,7 @@
       height: 100%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #eee;
-      line-height: 1.4;
+      line-height: 1.3;
       overflow-x: hidden;
       background-color: transparent;
       scroll-behavior: smooth;
@@ -38,18 +38,18 @@
     }
 
     .container {
-      max-width: 760px;
+      max-width: 666px;
       margin: 0 auto;
     }
 
     .glass {
       background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      border-radius: 12px;
-      backdrop-filter: blur(10px) saturate(140%);
-      -webkit-backdrop-filter: blur(10px) saturate(140%);
+      border: 0.7px solid rgba(255, 255, 255, 0.17);
+      border-radius: 5.5px;
+      backdrop-filter: blur(7px) saturate(140%);
+      -webkit-backdrop-filter: blur(7px) saturate(140%);
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-      padding: 14px;
+      padding: 11px;
       margin-bottom: 18px;
       opacity: 0;
       transform: translateY(40px) scale(0.98);
@@ -74,22 +74,22 @@
     }
 
     .header h1 {
-      font-size: 2.4rem;
+      font-size: 0.66rem;
       font-weight: 800;
       letter-spacing: 2px;
       color: #fff;
       text-align: center;
       opacity: 0;
-      animation: fadeIn 1s ease-out forwards;
+      animation: fadeIn 1.314s ease-out forwards;
     }
 
     .header p {
-      font-size: 0.85rem;
+      font-size: 0.55rem;
       color: #ccc;
       text-align: center;
       margin-top: 4px;
       opacity: 0;
-      animation: fadeIn 1s ease-out 0.2s forwards;
+      animation: fadeIn 1.314s ease-out 0.2628s forwards;
     }
 
     @keyframes fadeIn {
@@ -104,7 +104,7 @@
     }
 
     .card-title {
-      font-size: 1rem;
+      font-size: 0.7rem;
       font-weight: 700;
       text-transform: uppercase;
       margin-bottom: 6px;
@@ -112,21 +112,21 @@
     }
 
     .card-subtitle {
-      font-size: 0.8rem;
+      font-size: 0.55rem;
       color: #bbb;
       margin-bottom: 10px;
     }
 
     .card-price {
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       font-weight: 700;
       background: rgba(255, 255, 255, 0.1);
       padding: 4px 10px;
-      border-radius: 6px;
+      border-radius: 5.5px;
       margin-bottom: 12px;
       color: #fff;
       display: inline-block;
-      transition: background 0.3s ease;
+      transition: background 0.628s ease;
     }
 
     .card-price:hover {
@@ -142,7 +142,7 @@
       margin-bottom: 6px;
       padding-left: 18px;
       position: relative;
-      font-size: 0.85rem;
+      font-size: 0.66rem;
     }
 
     .card-features li::before {
@@ -154,7 +154,7 @@
     }
 
     .philosophy {
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       color: #eaeaea;
     }
 
@@ -170,7 +170,7 @@
     .contact a {
       color: #9ad0ff;
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
     }
 
     .contact a:hover {
@@ -186,12 +186,12 @@
     }
 
     input[type="email"] {
-      padding: 8px 12px;
+      padding: 6px 18px;
       border: none;
       border-radius: 6px;
       font-size: 1rem; /* Increased to prevent zoom on focus */
       width: 100%;
-      max-width: 240px;
+      max-width: 277px;
       background: rgba(255, 255, 255, 0.2);
       color: #fff;
       backdrop-filter: blur(6px);
@@ -215,13 +215,13 @@
     }
 
     button {
-      padding: 10px 20px; /* Increased for better touch targets */
+      padding: 8px 13px; /* Increased for better touch targets */
       border: none;
       border-radius: 6px;
       background-color: #1a1a1a;
       color: white;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.55rem;
       cursor: pointer;
       position: relative;
       transition: background-color 0.3s ease, transform 0.2s ease;
@@ -234,7 +234,7 @@
 
     button.loading {
       pointer-events: none;
-      opacity: 0.7;
+      opacity: 0.55;
     }
 
     button.loading::after {
@@ -258,19 +258,19 @@
 
     @media (max-width: 600px) {
       .container {
-        padding: 0 8px; /* Reduced padding for mobile */
+        padding: 0 7.7px; /* Reduced padding for mobile */
       }
       .header h1 {
-        font-size: 1.8rem; /* Adjusted for better fit */
+        font-size: 0.77rem; /* Adjusted for better fit */
       }
       .card-title {
-        font-size: 0.9rem;
+        font-size: 0.88rem;
       }
       .card-price {
         font-size: 0.75rem;
       }
       .glass {
-        padding: 12px;
+        padding: 9px;
         margin-bottom: 12px;
       }
     }
@@ -340,8 +340,8 @@
     </section>
 
     <section class="glass contact">
-      <p><strong>Instagram:</strong> <a href="https://instagram.com/elliia.elliia.elliia" target="_blank">@elliia.elliia.elliia</a></p>
-      <p><strong>Telegram / Email:</strong> available on request</p>
+      <p><strong>inst:</strong> <a href="https://instagram.com/elliia.elliia.elliia" target="_blank">elliia.elliia.elliia</a></p>
+      <p><strong>telegram / mail:</strong> available on request</p>
       <form id="contact-form" action="mailto:ellijabooking@gmail.com" method="post" enctype="text/plain">
         <input id="email-field" type="email" placeholder="your.email@example.com" required />
         <button type="submit">Send Inquiry</button>
