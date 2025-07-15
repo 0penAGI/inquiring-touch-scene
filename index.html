@@ -25,7 +25,8 @@
 
     #vanta-bg {
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       z-index: -1;
@@ -43,70 +44,86 @@
     .glass {
       background: rgba(255, 255, 255, 0.12);
       border: 1px solid rgba(255, 255, 255, 0.25);
-      border-radius: 16px;
-      backdrop-filter: blur(14px) saturate(160%);
-      -webkit-backdrop-filter: blur(14px) saturate(160%);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-      padding: 20px;
-      margin-bottom: 24px;
+      border-radius: 12px;
+      backdrop-filter: blur(10px) saturate(140%);
+      -webkit-backdrop-filter: blur(10px) saturate(140%);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      padding: 14px;
+      margin-bottom: 18px;
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transform: translateY(40px) scale(0.98);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+      will-change: transform, opacity;
     }
 
     .glass.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
 
     .glass:hover {
-      transform: scale(1.01);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     }
 
     .header h1 {
-      font-size: 3rem;
+      font-size: 2.4rem;
       font-weight: 800;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
       color: #fff;
       text-align: center;
+      opacity: 0;
+      animation: fadeIn 1s ease-out forwards;
     }
 
     .header p {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #ccc;
       text-align: center;
-      margin-top: 6px;
+      margin-top: 4px;
+      opacity: 0;
+      animation: fadeIn 1s ease-out 0.2s forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .cards {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 16px;
     }
 
     .card-title {
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: 700;
       text-transform: uppercase;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       color: #fff;
     }
 
     .card-subtitle {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: #bbb;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .card-price {
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       font-weight: 700;
       background: rgba(255, 255, 255, 0.1);
-      padding: 6px 12px;
+      padding: 4px 10px;
       border-radius: 6px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       color: #fff;
       display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .card-price:hover {
+      background: rgba(255, 255, 255, 0.2);
     }
 
     .card-features {
@@ -118,7 +135,7 @@
       margin-bottom: 6px;
       padding-left: 18px;
       position: relative;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
 
     .card-features li::before {
@@ -130,7 +147,7 @@
     }
 
     .philosophy {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #eaeaea;
     }
 
@@ -146,7 +163,7 @@
     .contact a {
       color: #9ad0ff;
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
 
     .contact a:hover {
@@ -154,7 +171,7 @@
     }
 
     form {
-      margin-top: 12px;
+      margin-top: 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -165,13 +182,14 @@
       padding: 8px 12px;
       border: none;
       border-radius: 6px;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       width: 100%;
-      max-width: 260px;
+      max-width: 240px;
       background: rgba(255, 255, 255, 0.2);
       color: #fff;
       backdrop-filter: blur(6px);
-      transition: border 0.2s ease;
+      transition: border 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+      will-change: transform;
     }
 
     input::placeholder {
@@ -180,37 +198,74 @@
 
     input:focus {
       border: 1px solid #9ad0ff;
+      box-shadow: 0 0 8px rgba(154, 208, 255, 0.5);
+      transform: scale(1.03);
       outline: none;
     }
 
+    input:not(:focus) {
+      transform: scale(1);
+    }
+
     button {
-      padding: 10px 20px;
+      padding: 8px 16px;
       border: none;
       border-radius: 6px;
       background-color: #1a1a1a;
       color: white;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       cursor: pointer;
+      position: relative;
       transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
     button:hover {
       background-color: #222222;
-      transform: scale(1.05);
+      transform: scale(1.08);
+    }
+
+    button.loading {
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    button.loading::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #fff;
+      border-top: 2px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
     }
 
     @media (max-width: 600px) {
       .header h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
       }
-
       .card-title {
-        font-size: 1rem;
+        font-size: 0.95rem;
       }
-
       .card-price {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .glass, .glass.visible, .glass:hover, input, button {
+        transition: none;
+        transform: none !important;
+        animation: none;
       }
     }
   </style>
@@ -273,7 +328,7 @@
     <section class="glass contact">
       <p><strong>Instagram:</strong> <a href="https://instagram.com/elliia.elliia.elliia" target="_blank">@elliia.elliia.elliia</a></p>
       <p><strong>Telegram / Email:</strong> available on request</p>
-      <form action="mailto:ellijabooking@gmail.com" method="post" enctype="text/plain">
+      <form id="contact-form" action="mailto:ellijabooking@gmail.com" method="post" enctype="text/plain">
         <input id="email-field" type="email" placeholder="your.email@example.com" required />
         <button type="submit">Send Inquiry</button>
       </form>
@@ -291,30 +346,65 @@
       minHeight: 200.00,
       minWidth: 200.00,
       scale: 1.0,
-      scaleMobile: 1.0,
-      color: 0xffffff,
+      scaleMobile: 1.2,
+      color: 0x9ad0ff,
       backgroundColor: 0x000000,
-      points: 10.0,
-      maxDistance: 25.0,
-      spacing: 18.0
+      points: 11.0,
+      maxDistance: 22.0,
+      spacing: 16.0
     });
 
-    // Fade-in on scroll
+    const glassCards = document.querySelectorAll('.glass');
+    glassCards.forEach((el, i) => {
+      el.style.transition = `opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${i * 100}ms, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${i * 100}ms`;
+      el.style.transform = `translateY(${30 + Math.random() * 10}px) scale(${0.98 + Math.random() * 0.02})`;
+    });
+
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.glass').forEach(el => observer.observe(el));
+    }, { threshold: 0.2 });
 
-    // Scroll into view on input focus (mobile fix)
-    const emailField = document.getElementById("email-field");
-    emailField.addEventListener("focus", () => {
+    glassCards.forEach(el => observer.observe(el));
+
+    // Parallax effect
+    window.addEventListener('scroll', () => {
+      glassCards.forEach(el => {
+        if (el.classList.contains('visible')) {
+          const rect = el.getBoundingClientRect();
+          const offset = (rect.top - window.innerHeight / 2) * 0.05;
+          el.style.setProperty('--parallax-offset', `${offset}px`);
+          el.style.transform = `translateY(var(--parallax-offset)) scale(1)`;
+        }
+      });
+    });
+
+    // Form handling
+    const form = document.getElementById('contact-form');
+    const button = form.querySelector('button');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      button.classList.add('loading');
       setTimeout(() => {
-        emailField.scrollIntoView({ behavior: "smooth", block: "center" });
+        button.classList.remove('loading');
+        alert('Opening your email client...');
+        form.submit();
+      }, 2000);
+    });
+
+    const emailField = document.getElementById('email-field');
+    emailField.addEventListener('focus', () => {
+      setTimeout(() => {
+        emailField.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }, 300);
+    });
+
+    emailField.addEventListener('blur', () => {
+      emailField.style.transform = 'scale(1)';
     });
   </script>
 </body>
