@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>ELLIIA – Creative Systems</title>
   <meta name="description" content="ELLIIA – Music Production, TouchDesigner Visuals, AI & Game Development." />
   <meta name="keywords" content="ELLIIA, music, visuals, AI, games" />
@@ -30,6 +30,7 @@
       width: 100%;
       height: 100%;
       z-index: -1;
+      touch-action: none; /* Prevents touch interference with scrolling */
     }
 
     body {
@@ -54,6 +55,12 @@
       transform: translateY(40px) scale(0.98);
       transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
       will-change: transform, opacity;
+    }
+
+    @supports not (backdrop-filter: blur(10px)) {
+      .glass {
+        background: rgba(255, 255, 255, 0.2); /* Fallback for unsupported devices */
+      }
     }
 
     .glass.visible {
@@ -182,7 +189,7 @@
       padding: 8px 12px;
       border: none;
       border-radius: 6px;
-      font-size: 0.9rem;
+      font-size: 1rem; /* Increased to prevent zoom on focus */
       width: 100%;
       max-width: 240px;
       background: rgba(255, 255, 255, 0.2);
@@ -208,7 +215,7 @@
     }
 
     button {
-      padding: 8px 16px;
+      padding: 10px 20px; /* Increased for better touch targets */
       border: none;
       border-radius: 6px;
       background-color: #1a1a1a;
@@ -250,14 +257,21 @@
     }
 
     @media (max-width: 600px) {
+      .container {
+        padding: 0 8px; /* Reduced padding for mobile */
+      }
       .header h1 {
-        font-size: 2rem;
+        font-size: 1.8rem; /* Adjusted for better fit */
       }
       .card-title {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
       }
       .card-price {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
+      }
+      .glass {
+        padding: 12px;
+        margin-bottom: 12px;
       }
     }
 
@@ -346,7 +360,7 @@
       minHeight: 200.00,
       minWidth: 200.00,
       scale: 1.0,
-      scaleMobile: 1.2,
+      scaleMobile: 1.0, // Adjusted for consistent mobile scaling
       color: 0x9ad0ff,
       backgroundColor: 0x000000,
       points: 11.0,
@@ -356,7 +370,7 @@
 
     const glassCards = document.querySelectorAll('.glass');
     glassCards.forEach((el, i) => {
-      el.style.transition = `opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${i * 100}ms, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${i * 100}ms`;
+      el.style.transition = `opacity 0.8s cubic-bezier(0.4, 0,W, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${i * 100}ms`;
       el.style.transform = `translateY(${30 + Math.random() * 10}px) scale(${0.98 + Math.random() * 0.02})`;
     });
 
@@ -386,8 +400,14 @@
     // Form handling
     const form = document.getElementById('contact-form');
     const button = form.querySelector('button');
+    const emailField = document.getElementById('email-field');
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
+      if (!emailField.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
       button.classList.add('loading');
       setTimeout(() => {
         button.classList.remove('loading');
@@ -396,11 +416,11 @@
       }, 2000);
     });
 
-    const emailField = document.getElementById('email-field');
     emailField.addEventListener('focus', () => {
-      setTimeout(() => {
+      const rect = emailField.getBoundingClientRect();
+      if (rect.top < 0 || rect.bottom > window.innerHeight) {
         emailField.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 300);
+      }
     });
 
     emailField.addEventListener('blur', () => {
