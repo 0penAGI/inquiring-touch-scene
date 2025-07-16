@@ -14,8 +14,8 @@ This repository hosts the ELLIIA website, showcasing our services with a sleek g
 
 ## Live Demo
 
-Check out the live site: [ELLIIA on GitHub Pages](https://0penagi.github.io/Holographic-AI-Liana/)  
-*Note: Replace the URL with your actual GitHub Pages link if different.*
+Check out the live site: [ELLIIA on GitHub Pages](https://0penagi.github.io/inquiring-touch-scene/)  
+
 
 ## Services & Pricing
 
