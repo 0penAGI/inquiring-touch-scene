@@ -1,6 +1,6 @@
-# ELLIIA – Creative Systems
+### Creative Systems
 
-
+![Liana Logo](https://github.com/user-attachments/assets/3ff22b3e-d71c-494a-90b8-b6fcefa5fd94)
 *Modern solutions for music production, interactive installations, and AI-driven development.*
 
 ## Overview
