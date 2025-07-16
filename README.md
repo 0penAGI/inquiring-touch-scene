@@ -1,6 +1,6 @@
 # ELLIIA – Creative Systems
 
-![ELLIIA Banner](https://via.placeholder.com/1200x300.png?text=ELLIIA+Creative+Systems)  
+
 *Modern solutions for music production, interactive installations, and AI-driven development.*
 
 ## Overview
