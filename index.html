@@ -19,23 +19,8 @@
       color: #eee;
       line-height: 1.1;
       overflow-x: hidden;
-      overflow-y: auto; /* Явно разрешаем прокрутку по Y */
-      overscroll-behavior: contain; /* Отключаем эластичную прокрутку */
-      margin: 0; /* Убираем стандартные отступы */
       background-color: transparent;
       scroll-behavior: smooth;
-    }
-
-    body {
-      padding: 16px;
-      min-height: 100vh; /* Убедимся, что body занимает всю высоту */
-      display: flex;
-      flex-direction: column;
-    }
-
-    main.container {
-      flex: 1; /* Контейнер займет доступное пространство */
-      padding-top: 20px; /* Добавляем отступ сверху для видимости заголовка */
     }
 
     #vanta-bg {
@@ -48,25 +33,10 @@
       touch-action: none;
     }
 
-    /* Убедимся, что заголовок не обрезается */
-    .header {
-      margin-top: 0; /* Убираем лишние отступы */
+    body {
+      padding: 16px;
     }
 
-    /* Добавляем нижний отступ для последнего элемента, чтобы контент не прилипал к низу */
-    section:last-child {
-      margin-bottom: 20px; /* Отступ снизу для "примагничивания" */
-    }
-
-    /* Отключаем нежелательное поведение прокрутки на мобильных устройствах */
-    @media (max-width: 600px) {
-      body {
-        padding: 10px; /* Уменьшаем padding для мобильных */
-      }
-      main.container {
-        padding-top: 15px; /* Корректируем отступ для мобильных */
-      }
-    }
     .container {
       max-width: 666px;
       margin: 0 auto;
