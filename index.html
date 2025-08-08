@@ -481,8 +481,14 @@
       el.style.transition = `opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${i * 100}ms`;
       el.style.transform = `translateY(${30 + Math.random() * 10}px) scale(${0.98 + Math.random() * 0.02})`;
     });
-
     const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+        }
+      });
+
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
@@ -490,9 +496,7 @@
         }
       });
     }, { threshold: 0.2 });
-
     glassCards.forEach(el => observer.observe(el));
-
     window.addEventListener('scroll', () => {
       glassCards.forEach(el => {
         if (el.classList.contains('visible')) {
@@ -503,11 +507,9 @@
         }
       });
     });
-
     const form = document.getElementById('contact-form');
     const button = form.querySelector('button');
     const emailField = document.getElementById('email-field');
-
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       if (!emailField.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
@@ -521,14 +523,12 @@
         form.submit();
       }, 2000);
     });
-
     emailField.addEventListener('focus', () => {
       const rect = emailField.getBoundingClientRect();
       if (rect.top < 0 || rect.bottom > window.innerHeight) {
         emailField.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     });
-
     emailField.addEventListener('blur', () => {
       emailField.style.transform = 'scale(1)';
     });
