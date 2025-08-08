@@ -43,23 +43,25 @@
     }
 
     .glass {
-      background: rgba(255, 255, 255, 0.12);
-      border: 0.7px solid rgba(255, 255, 255, 0.17);
-      border-radius: 5.5px;
-      backdrop-filter: blur(5px) saturate(140%);
-      -webkit-backdrop-filter: blur(7px) saturate(140%);
-      box-shadow: 0 2px 9px rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.07); /* More transparent */
+      border: 0.7px solid rgba(255, 255, 255, 0.1); /* Softer border */
+      border-radius: 11px; /* Smoother corners */
+      backdrop-filter: blur(6px) saturate(150%); /* Enhanced glass effect */
+      -webkit-backdrop-filter: blur(3px) saturate(188%);
+      box-shadow: 
+        0 2px 11px rgba(0, 0, 0, 0.1),
+        inset 0 0 11px rgba(255, 255, 255, 0.07); /* Inner glow for displacement */
       padding: 9px;
       margin-bottom: 18px;
       opacity: 0;
-      transform: translateY(40px) scale(0.98);
+      transform: translateY(40px) scale(0.93);
       transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
       will-change: transform, opacity;
     }
 
     @supports not (backdrop-filter: blur(10px)) {
       .glass {
-        background: rgba(255, 255, 255, 0.2); /* Fallback for unsupported devices */
+        background: rgba(255, 255, 255, 0.15); /* Slightly more opaque fallback */
       }
     }
 
@@ -70,7 +72,9 @@
 
     .glass:hover {
       transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.15),
+        inset 0 0 12px rgba(255, 255, 255, 0.1); /* Enhanced displacement on hover */
     }
 
     .header h1 {
@@ -189,7 +193,7 @@
       padding: 6px 18px;
       border: none;
       border-radius: 6px;
-      font-size: 1rem; /* Increased to prevent zoom on focus */
+      font-size: 1rem;
       width: 100%;
       max-width: 277px;
       background: rgba(255, 255, 255, 0.2);
@@ -215,7 +219,7 @@
     }
 
     button {
-      padding: 8px 13px; /* Increased for better touch targets */
+      padding: 8px 13px;
       border: none;
       border-radius: 6px;
       background-color: #1a1a1a;
@@ -258,10 +262,10 @@
 
     @media (max-width: 600px) {
       .container {
-        padding: 0 7.7px; /* Reduced padding for mobile */
+        padding: 0 7.7px;
       }
       .header h1 {
-        font-size: 0.77rem; /* Adjusted for better fit */
+        font-size: 0.77rem;
       }
       .card-title {
         font-size: 0.88rem;
@@ -297,7 +301,7 @@
       <article class="glass">
         <h2 class="card-title">Music Production</h2>
         <p class="card-subtitle">From concept to final track</p>
-        <p class="card-price">from $1000 USD</p>
+        <p class="card-price">from $2000 USD</p>
         <ul class="card-features">
           <li>Custom instrumental production</li>
           <li>Lyric writing and vocal recording</li>
@@ -341,6 +345,8 @@
 
     <section class="glass contact">
       <p><strong>inst:</strong> <a href="https://instagram.com/elliia.elliia.elliia" target="_blank">elliia.elliia.elliia</a></p>
+      <p><strong>works:</strong> <a href="https://drive.google.com/file/d/13fRHg537w1bVHYIVKRmu0uYMGFXC4FGJ/view?usp=drivesdk" target="_blank">portfolio</a></p>
+      <p><strong>products:</strong> <a href="https://t.me/ZeropenAGI" target="_blank">0penAGI</a></p>
       <p><strong>telegram / mail:</strong> available on request</p>
       <form id="contact-form" action="mailto:ellijabooking@gmail.com" method="post" enctype="text/plain">
         <input id="email-field" type="email" placeholder="your.email@example.com" required />
@@ -360,7 +366,7 @@
       minHeight: 200.00,
       minWidth: 200.00,
       scale: 1.0,
-      scaleMobile: 1.0, // Adjusted for consistent mobile scaling
+      scaleMobile: 1.0,
       color: 0x9ad0ff,
       backgroundColor: 0x000000,
       points: 11.0,
@@ -370,7 +376,7 @@
 
     const glassCards = document.querySelectorAll('.glass');
     glassCards.forEach((el, i) => {
-      el.style.transition = `opacity 0.8s cubic-bezier(0.4, 0,W, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${i * 100}ms`;
+      el.style.transition = `opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${i * 100}ms`;
       el.style.transform = `translateY(${30 + Math.random() * 10}px) scale(${0.98 + Math.random() * 0.02})`;
     });
 
@@ -385,7 +391,6 @@
 
     glassCards.forEach(el => observer.observe(el));
 
-    // Parallax effect
     window.addEventListener('scroll', () => {
       glassCards.forEach(el => {
         if (el.classList.contains('visible')) {
@@ -397,7 +402,6 @@
       });
     });
 
-    // Form handling
     const form = document.getElementById('contact-form');
     const button = form.querySelector('button');
     const emailField = document.getElementById('email-field');
