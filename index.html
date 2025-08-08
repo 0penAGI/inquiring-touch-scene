@@ -42,22 +42,22 @@
       margin: 0 auto;
     }
 
-        .glass {
-          background: rgba(255, 255, 255, 0.07);
-          border: 0.7px solid rgba(255, 255, 255, 0.1);
-          border-radius: 11px;
-          backdrop-filter: blur(3.14px) saturate(188%);
-          -webkit-backdrop-filter: blur(3px) saturate(188%);
-          box-shadow: 
-            0 2px 11px rgba(0, 0, 0, 0.1),
-            inset 0 0 11px rgba(255, 255, 255, 0.07);
-          padding: 9px;
-          margin-bottom: 18px;
-          opacity: 0;
-          transform: translateY(40px) scale(0.93);
-          transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
-          will-change: transform, opacity;
-        }
+     .glass {
+       background: rgba(255, 255, 255, 0.07);
+       border: 0.7px solid rgba(255, 255, 255, 0.1);
+       border-radius: 28px;
+       backdrop-filter: blur(3.14px) saturate(188%);
+       -webkit-backdrop-filter: blur(3px) saturate(188%);
+       box-shadow: 
+         0 2px 11px rgba(0, 0, 0, 0.1),
+         inset 0 0 11px rgba(255, 255, 255, 0.07);
+       padding: 9px;
+       margin-bottom: 15px;
+       opacity: 0;
+       transform: translateY(40px) scale(0.93);
+       transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+       will-change: transform, opacity;
+     }
 
     @supports not (backdrop-filter: blur(3.14px)) {
       .glass {
@@ -80,7 +80,7 @@
     .header h1 {
       font-size: 0.77rem;
       font-weight: 800;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       color: #fff;
       text-align: center;
       opacity: 0;
@@ -91,7 +91,7 @@
       font-size: 0.55rem;
       color: #ccc;
       text-align: center;
-      margin-top: 8px;
+      margin-top: 11px;
       opacity: 0;
       animation: fadeIn 1.314s ease-out 0.2628s forwards;
     }
@@ -103,6 +103,7 @@
 
     .cards {
       display: flex;
+      text-align: center;
       flex-direction: column;
       gap: 11px;
     }
@@ -111,14 +112,14 @@
       font-size: 0.68rem;
       font-weight: 700;
       text-transform: uppercase;
-      margin-bottom: 8px;
+      margin-bottom: 11px;
       color: #fff;
     }
 
     .card-subtitle {
       font-size: 0.55rem;
       color: #bbb;
-      margin-bottom: 8px;
+      margin-bottom: 11px;
     }
 
     .card-price {
@@ -126,7 +127,7 @@
       font-weight: 700;
       background: rgba(255, 255, 255, 0.1);
       padding: 4px 10px;
-      border-radius: 5.5px;
+      border-radius: 25px;
       margin-bottom: 12px;
       color: #fff;
       display: inline-block;
@@ -144,15 +145,14 @@
 
     .card-features li {
       margin-bottom: 8px;
-      padding-left: 18px;
-      position: relative;
+      padding-left: 11px;
+      position: center;
       font-size: 0.66rem;
     }
 
     .card-features li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
+      position: center;
+      left: -55;
       color: #fff;
       font-weight: bold;
     }
@@ -207,8 +207,8 @@
       flex: 0 0 auto;
       background: rgba(255, 255, 255, 0.1);
       border: 0.7px solid rgba(255, 255, 255, 0.1);
-      border-radius: 6px;
-      padding: 8px 16px;
+      border-radius: 25px;
+      padding: 15px 16px;
       backdrop-filter: blur(4px) saturate(150%);
       -webkit-backdrop-filter: blur(4px) saturate(150%);
       transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
@@ -228,7 +228,7 @@
     }
 
     .carousel-nav {
-      display: flex;
+      display: center;
       justify-content: center;
       gap: 12px;
       margin-top: 8px;
@@ -258,7 +258,7 @@
 
     form {
       margin-top: 10px;
-      display: flex;
+      display: center;
       flex-direction: column;
       align-items: center;
       gap: 10px;
@@ -356,11 +356,11 @@
         padding: 6px 12px;
       }
       .carousel-item a {
-        font-size: 0.7rem;
+        font-size: 0.88rem;
       }
       .carousel-nav button {
-        width: 28px;
-        height: 28px;
+        width: 25px;
+        height: 25px;
         font-size: 0.9rem;
       }
     }
@@ -461,13 +461,13 @@
       gyroControls: false,
       minHeight: 200.00,
       minWidth: 200.00,
-      scale: 1.0,
-      scaleMobile: 1.0,
+      scale: .88,
+      scaleMobile: .88,
       color: 0x9ad0ff,
-      backgroundColor: 0x000000,
-      points: 11.0,
-      maxDistance: 22.0,
-      spacing: 16.0
+      backgroundColor: 0x050505,
+      points: 15.0,
+      maxDistance: 25.0,
+      spacing: 18.0
     });
 
     const glassCards = document.querySelectorAll('.glass');
