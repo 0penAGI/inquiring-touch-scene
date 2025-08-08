@@ -42,35 +42,22 @@
       margin: 0 auto;
     }
 
-    .glass {
-      background: rgba(255, 255, 255, 0.07);
-      border: 0.7px solid rgba(255, 255, 255, 0.1);
-      border-radius: 11px;
-      backdrop-filter: blur(3.14px) saturate(188%);
-      -webkit-backdrop-filter: blur(3px) saturate(188%);
-      box-shadow: 
-        0 2px 11px rgba(0, 0, 0, 0.1),
-        inset 0 0 11px rgba(255, 255, 255, 0.07);
-      padding: 6px;
-      margin-bottom: 18px;
-      opacity: 0;
-      transform: translateY(42px) scale(0.55);
-      animation: glassPop 3.14s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-    }
-
-    @keyframes glassPop {
-      0% {
-        opacity: 0;
-        transform: translateY(42px) scale(0.55);
-      }
-      60% {
-        opacity: 1;
-        transform: translateY(-4px) scale(1.01);
-      }
-      100% {
-        transform: translateY(0) scale(1);
-      }
-    }  
+        .glass {
+          background: rgba(255, 255, 255, 0.07);
+          border: 0.7px solid rgba(255, 255, 255, 0.1);
+          border-radius: 11px;
+          backdrop-filter: blur(3.14px) saturate(188%);
+          -webkit-backdrop-filter: blur(3px) saturate(188%);
+          box-shadow: 
+            0 2px 11px rgba(0, 0, 0, 0.1),
+            inset 0 0 11px rgba(255, 255, 255, 0.07);
+          padding: 9px;
+          margin-bottom: 18px;
+          opacity: 0;
+          transform: translateY(40px) scale(0.93);
+          transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+          will-change: transform, opacity;
+        }
 
     @supports not (backdrop-filter: blur(3.14px)) {
       .glass {
@@ -559,6 +546,7 @@
       carousel.scrollBy({ left: 150, behavior: 'smooth' });
       setTimeout(updateButtons, 300);
     });
+    
 
     carousel.addEventListener('scroll', updateButtons);
     updateButtons();
